@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from "../../context/auth.jsx";
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { user,setUser } = useContext(UserContext);
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -12,6 +15,9 @@ const Login = () => {
       email,
       password
     });
+    
+    setEmail('');
+    setPassword('');
     // console.log("User logged in:", user);
     // console.log("User role:", password);  
   }
