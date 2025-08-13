@@ -15,11 +15,12 @@ const App = () => {
       setRole("employee");
     } else {
       alert("please enter correct email");
+      setRole(""); 
     }
   }, [user]);
 
 
-  if (!user) {
+  if (!role) {
     return <Login />;
   } else if (role === "admin") {
     return <Admin />;
