@@ -5,28 +5,39 @@ import { UserContext } from "../../context/auth.jsx";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user,setUser } = useContext(UserContext);
+  const { user,setUser,setrole } = useContext(UserContext);
+  
+  const handlelogin = (e) => {
+  e.preventDefault();
+  localStorage.setItem("user", JSON.stringify({ email, password }));
+ 
+  setUser({ email, password });
+  setrole("user");
+
+  
+  setEmail('');
+  setPassword('');
+  console.log("user logged did not lost", email, password);
+};
+  
+  
+   
+
+  
+  
   
   
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-    setUser({
-      email,
-      password
-    });
-    
-    setEmail('');
-    setPassword('');
+  
     // console.log("User logged in:", user);
     // console.log("User role:", password);  
-  }
+  
 
   return (
     <div className="h-screen bg-black flex flex-col flex-start gap-10 items-center">
       <h1 className='text-white text-4xl font-bold mt-[35px] mb-[70px]'>Login Page</h1>
       <form 
-        onSubmit={handleSubmit}
+        onSubmit={handlelogin}
         className="flex flex-col justify-center items-center gap-[15px] border-2 border-green-500 rounded p-20"
       >
         <input 
@@ -45,7 +56,7 @@ const Login = () => {
           placeholder="Enter your password" 
           value={password}
         />
-        <button className="border-2 bg-green border-emerald-600 rounded-md py-3 px-10 text-white bg-red-500">
+        <button  className="border-2 bg-green border-emerald-600 rounded-md py-3 px-10 text-white bg-red-500">
           LOGIN
         </button>
       </form>

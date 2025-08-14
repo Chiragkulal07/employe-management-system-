@@ -2,6 +2,7 @@ import React from 'react'
 import Header from "../smallcomponent/header"
 import Task from "../smallcomponent/task"
 import Swipe from "../smallcomponent/swipe"
+import {setlocalstorage} from '../../utils/local';
 
 const Employee = () => {
   return (
